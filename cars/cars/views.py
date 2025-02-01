@@ -46,3 +46,9 @@ class NewCarView(View):
             'new_car.html',
             { 'new_car_form': new_car_form }
         )
+    
+class NewCarCreateView(CreateView):
+    model = Car
+    form_class = CarModelForm
+    template_name = 'new_car.html'
+    success_url = '/cars/'
