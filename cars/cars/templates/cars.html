@@ -1,0 +1,14 @@
+<html>
+    <header>
+        <title>Meus Carros</title>
+    </header>
+    {% block content %}
+        <body>
+            { % for car in cars % }
+            { % endfor % }
+            <h3>
+                Carros
+            </h3>
+        </body>
+    {% endblock %}
+</html>
