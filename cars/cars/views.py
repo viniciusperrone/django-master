@@ -17,8 +17,8 @@ def cars_view(request):
         { 'cars': cars }
     )
 
-class CarView(View):
-    
+class CarsView(View):
+
     def get(self, request):
         cars = Car.objects.all().order_by('model')
         search = request.GET.get('search')
