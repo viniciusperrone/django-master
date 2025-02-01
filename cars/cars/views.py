@@ -1,8 +1,4 @@
-from typing import Any
-from django.db.models.query import QuerySet
-from django.shortcuts import render, redirect
-from django.views import View
-from django.views.generic import ListView, CreateView
+from django.views.generic import ListView, CreateView, DetailView
 
 from cars.models import Car
 from cars.forms import CarModelForm
@@ -26,3 +22,7 @@ class NewCarCreateView(CreateView):
     form_class = CarModelForm
     template_name = 'new_car.html'
     success_url = '/cars/'
+
+class CarDetailView(DetailView):
+    model = Car
+    template_name = 'car_detail.html'
