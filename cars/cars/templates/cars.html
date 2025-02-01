@@ -4,11 +4,10 @@
     </header>
     {% block content %}
         <body>
-            { % for car in cars % }
-            { % endfor % }
-            <h3>
-                Carros
-            </h3>
+            {% for car in cars %}
+                <h3>{{ car.brand }} - {{ car.model }} - {{ car.factory_year }}</h3>
+            {% endfor %}
+            
         </body>
     {% endblock %}
 </html>
