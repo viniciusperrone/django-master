@@ -57,4 +57,9 @@ def genre_detail_view(request, pk):
 
         genre.save()
 
-        return JsonResponse({'id': genre.id, 'name': genre.name}, status=200)
+        return JsonResponse({'id': genre.id, 'name': genre.name}, status=203)
+
+    elif request.method == 'DELETE':
+        genre.delete()
+
+        return JsonResponse({'message': 'Successfully deleted genre'}, status=204)
