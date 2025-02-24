@@ -16,3 +16,8 @@ class MovieSerializer(serializers.ModelSerializer):
 
         return round(rate, 1) if rate else None
 
+class MovieStatsSerializer(serializers.Serializer):
+    total_movies = serializers.IntegerField()
+    movies_by_genre = serializers.ListField()
+    total_reviews = serializers.IntegerField()
+    average_stars = serializers.FloatField()
