@@ -3,7 +3,14 @@ from rest_framework import serializers
 
 from movies.models import Movie
 
+
 class MovieSerializer(serializers.ModelSerializer):
+
+    class Meta:
+        model = Movie
+        fields = '__all__'
+
+class MovieListDetailSerializer(serializers.ModelSerializer):
     rate = serializers.SerializerMethodField(read_only=True)
 
     class Meta:
