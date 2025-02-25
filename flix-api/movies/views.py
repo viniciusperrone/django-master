@@ -13,11 +13,17 @@ from utils.permissions import GlobalDefaultPermission
 class MovieListCreateView(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated, GlobalDefaultPermission,)
     queryset = Movie.objects.all()
-    serializer_class = MovieSerializer
+
+    def get_serializer_class(self):
+        if self.request.method == 'POST':
+            return MovieSerializer
+        else:
+            return MovieListDetailSerializer
 
 class MovieRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
     permission_classes = (IsAuthenticated, GlobalDefaultPermission,)
     queryset = Movie.objects.all()
+
 
     def get_serializer_class(self):
         if self.request.method == 'POST':
