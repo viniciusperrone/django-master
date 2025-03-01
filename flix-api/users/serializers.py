@@ -10,4 +10,9 @@ class UserSerializer(serializers.ModelSerializer):
 
     def get_permissions(self, obj):
         return obj.user_permissions.values_list("codename", flat=True)
-    
+
+class UserCreateSerializer(serializers.ModelSerializer):    
+    class Meta:
+        model = User
+        fields = "__all__"
+
