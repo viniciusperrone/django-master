@@ -4,6 +4,9 @@ from django.views.generic import ListView, CreateView, DetailView, UpdateView, D
 from products.models import Product
 from products.forms import ProductForm
 
+from brands.models import Brand
+from categories.models import Category
+
 
 class ProductListView(ListView):
     model = Product
@@ -19,6 +22,14 @@ class ProductListView(ListView):
             queryset = queryset.filter(title__icontains=title)
 
         return queryset
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+
+        context['categories'] = Category.objects.all()
+        context['brands'] = Brand.objects.all()
+
+        return context
 
 class ProductCreateView(CreateView):
     model = Product
