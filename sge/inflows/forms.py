@@ -7,16 +7,16 @@ class InflowForm(forms.ModelForm):
 
     class Meta:
         model = Inflow
-        fields = ['supplier', 'product', 'quantity', 'descriptions']
+        fields = ['supplier', 'product', 'quantity', 'description']
         widgets = {
             'supplier': forms.Select(attrs={'class': 'form-control'}),
             'product': forms.Select(attrs={'class': 'form-control'}),
             'quantity': forms.NumberInput(attrs={'class': 'form-control'}),
-            'descriptions': forms.Textarea(attrs={'class': 'form-control', 'row': 3})
+            'description': forms.Textarea(attrs={'class': 'form-control', 'row': 3})
         }
         labels={
             'supplier': 'Fornecedor',
             'product': 'Product',
             'quantity': 'Quantity',
-            'descriptions': 'Descrição'
+            'description': 'Descrição'
         }
