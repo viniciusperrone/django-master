@@ -23,8 +23,8 @@ class CategoryListView(ListView):
 class CategoryCreateView(CreateView):
     model = Category
     template_name = 'category_create.html'
-    # form_class = BrandForm
-    success_url = reverse_lazy('brand_list')
+    form_class = CategoryForm
+    success_url = reverse_lazy('category_list')
 
 
 class CategoryDetailView(DetailView):
