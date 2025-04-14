@@ -2,7 +2,7 @@ from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
 
 from categories.models import Category
-# from brands.forms import BrandForm
+from categories.forms import CategoryForm
 
 
 class CategoryListView(ListView):
@@ -34,7 +34,7 @@ class CategoryDetailView(DetailView):
 class CategoryUpdateView(UpdateView):
     model = Category
     template_name = 'category_update.html'
-    # form_class = BrandForm
+    form_class = CategoryForm
     success_url = reverse_lazy('category_list')
 
 class CategoryDeleteView(DeleteView):
