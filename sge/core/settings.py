@@ -45,7 +45,8 @@ INSTALLED_APPS = [
     'suppliers',
     'products',
     'inflows',
-    'outflows'
+    'outflows',
+    'authentication'
 ]
 
 LOGIN_URL = 'login'
