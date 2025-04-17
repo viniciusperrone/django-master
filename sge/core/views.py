@@ -1,9 +1,12 @@
-from django.shortcuts import render
 import json
+
+from django.contrib.auth.decorators import login_required
+from django.shortcuts import render
 
 from utils.metrics import get_products_metrics, get_sales_metrics, get_daily_sales_data, get_daily_sales_quantity_data, get_graphic_product_category_metric, get_graphic_product_brand_metric
 
 
+@login_required(login_url='login')
 def home(request):
     products_metrics = get_products_metrics()
     sales_metrics = get_sales_metrics()
