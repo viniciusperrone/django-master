@@ -1,10 +1,13 @@
+from typing import Dict
+
 from django.utils.formats import number_format
 from django.utils import timezone
 from django.db.models import Sum, F
 
-from typing import Dict
 from products.models import Product
 from outflows.models import Outflow
+from categories.models import Category
+from brands.models import Brand
 
 
 def get_products_metrics() -> Dict:
@@ -78,3 +81,13 @@ def get_daily_sales_quantity_data():
         dates=dates,
         values=quantities,
     )
+
+def get_graphic_product_category_metric():
+    categories = Category.objects.all()
+
+    return {category.name: Product.objects.filter(category=category).count() for category in categories}
+
+def get_graphic_product_brand_metric():
+    brands = Brand.objects.all()
+
+    return {brand.name: Product.objects.filter(brand=brand).count() for brand in brands}
