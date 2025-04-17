@@ -6,4 +6,5 @@ class OutflowsConfig(AppConfig):
     name = 'outflows'
 
     def ready(self):
-        import outflows.signals
+        import outflows.signals # noqa: F401
+
