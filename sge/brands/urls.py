@@ -11,5 +11,5 @@ urlpatterns = [
     path('brands/<int:pk>/update/', BrandUpdateView.as_view(), name='brand_update'),
     path('brands/<int:pk>/delete/', BrandDeleteView.as_view(), name='brand_delete'),
 
-    path(f'{BASIC_API_URL}/brands/', BrandCreateListAPIView.as_view(), name='brand-create-list-api-view')
+    path(f'{BASIC_API_URL}/brands/', BrandCreateListAPIView.as_view(), name='brand-create-list-api-view'),
 ]

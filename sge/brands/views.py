@@ -1,4 +1,4 @@
-from rest_framework.generics import ListAPIView
+from rest_framework.generics import ListCreateAPIView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.urls import reverse_lazy
 from django.views.generic import ListView, CreateView, DetailView, UpdateView, DeleteView
@@ -50,6 +50,6 @@ class BrandDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     success_url = reverse_lazy('brand_list')
     permission_required = 'brands.delete_brand'
 
-class BrandCreateListAPIView(ListAPIView):
+class BrandCreateListAPIView(ListCreateAPIView):
     queryset = Brand.objects.all()
     serializer_class = BrandSerializer
