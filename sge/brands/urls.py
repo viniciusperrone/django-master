@@ -1,5 +1,5 @@
 from django.urls import path
-from brands.views import BrandListView, BrandCreateView, BrandDetailView, BrandUpdateView, BrandDeleteView, BrandCreateListAPIView
+from brands.views import BrandListView, BrandCreateView, BrandDetailView, BrandUpdateView, BrandDeleteView, BrandCreateListAPIView, BrandRetrieveUpdateDestroyAPIView
 
 from utils.api import BASIC_API_URL
 
@@ -12,4 +12,5 @@ urlpatterns = [
     path('brands/<int:pk>/delete/', BrandDeleteView.as_view(), name='brand_delete'),
 
     path(f'{BASIC_API_URL}/brands/', BrandCreateListAPIView.as_view(), name='brand-create-list-api-view'),
+    path(f'{BASIC_API_URL}/brands/<int:pk>/', BrandRetrieveUpdateDestroyAPIView.as_view(), name='brand-detail-api-view'),
 ]
