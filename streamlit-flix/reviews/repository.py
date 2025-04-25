@@ -9,7 +9,7 @@ class ReviewRepository:
 
     def __init__(self) -> None:
         self.__base_url = 'http://localhost:8000/api/v1'
-        self.__review_url = f'{self.__base_url}/review/'
+        self.__review_url = f'{self.__base_url}/reviews/'
         self.__headers = {
             'Authorization': f'Bearer {st.session_state.token}'
         }
@@ -32,7 +32,7 @@ class ReviewRepository:
 
     def create_review(self, review):
         response = requests.post(
-            url=self.__movies_url,
+            url=self.__review_url,
             headers=self.__headers,
             data=review
         )

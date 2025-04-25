@@ -3,33 +3,56 @@ import pandas as pd
 import streamlit as st
 from st_aggrid import AgGrid
 
+from reviews.services import ReviewService
+from movies.services import MovieService
 
-reviews = [
-    {
-        'id': 1,
-        'stars': 5
-    },
-    {
-        'id': 2,
-        'stars': 4
-    },
-    {
-        'id': 3,
-        'stars': 3
-    }
-]
 
 def show_reviews():
-    st.write('Lista de Avaliações')
+    review_service = ReviewService()
+    reviews = review_service.get_reviews()
 
-    AgGrid(
-        data=pd.DataFrame(reviews),
-        reload_data=True,
-        key='movies_grid'
+    if reviews:
+        st.write('Lista de Avaliações')
+
+        reviews_df = pd.json_normalize(reviews)
+
+        AgGrid(
+            data=reviews_df,
+            reload_data=True,
+            key='reviews_grid'
+        )
+
+    else:
+        st.warning('Nenhuma avaliação encontrada.')
+
+    st.title('Cadastrar Nova avaliação')
+
+    movie_service = MovieService()
+    movies = movie_service.get_movies()
+    movie_titles = {movie["title"]: movie["id"] for movie in movies}
+
+    selected_movie_title = st.selectbox('Filme', list(movie_titles.keys()))
+    stars = st.number_input(
+        label="Estrelas",
+        min_value=0,
+        max_value=5,
+        step=1
     )
+    comment = st.text_area('Comentário')
 
-    st.title('Cadastrar nova Avaliação')
-    name = st.text_input('Nome de Avaliação')
 
     if st.button('Cadastrar'):
-        st.success(f'Availiação "{name}" cadastrado com sucesso!')
+        new_review = review_service.create_review(
+            movie=movie_titles[selected_movie_title],
+            stars=stars,
+            comment=comment,
+        )
+
+        print("new_review", new_review)
+
+        if new_review:
+            st.rerun()
+
+        else:
+
+            st.warning('Erro ao cadastrar a avaliação. Verifique os campos')
