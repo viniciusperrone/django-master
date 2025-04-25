@@ -16,3 +16,8 @@ def login(username, password):
         st.session_state.token = response.get("access")
 
         st.rerun()
+
+def logout():
+    st.session_state.clear()
+
+    st.rerun()
