@@ -1,6 +1,7 @@
 import streamlit as st
 
-from api.service import Auth
+from api.services import Auth
+
 
 def login(username, password):
     auth_service = Auth()
@@ -16,6 +17,7 @@ def login(username, password):
         st.session_state.token = response.get("access")
 
         st.rerun()
+
 
 def logout():
     st.session_state.clear()

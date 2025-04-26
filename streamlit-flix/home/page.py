@@ -3,6 +3,7 @@ import plotly.express as px
 
 from movies.services import MovieService
 
+
 def show_home():
     movie_service = MovieService()
     movie_stats = movie_service.get_movies_stats()
@@ -20,7 +21,6 @@ def show_home():
 
         st.plotly_chart(fig)
 
-
     st.subheader('Total de Filmes Cadastrados:')
     st.write(movie_stats['total_movies'])
 
@@ -33,5 +33,3 @@ def show_home():
 
     st.subheader('Média Geral de Estrelas nas Avaliações')
     st.write(movie_stats['average_stars'])
-
-

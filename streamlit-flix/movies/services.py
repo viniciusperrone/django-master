@@ -8,7 +8,6 @@ class MovieService:
     def __init__(self):
         self.movie_repository = MovieRepository()
 
-
     def get_movies(self):
         if 'movies' in st.session_state:
             return st.session_state.movies

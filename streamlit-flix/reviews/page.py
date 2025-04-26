@@ -40,7 +40,6 @@ def show_reviews():
     )
     comment = st.text_area('Comentário')
 
-
     if st.button('Cadastrar'):
         new_review = review_service.create_review(
             movie=movie_titles[selected_movie_title],

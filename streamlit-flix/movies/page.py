@@ -42,12 +42,12 @@ def show_movies():
 
     genre_service = GenreService()
     genres = genre_service.get_genres()
-    genre_names = { genre['name']: genre['id'] for genre in genres }
+    genre_names = {genre['name']: genre['id'] for genre in genres}
     selected_genre_name = st.selectbox('Gênero', list(genre_names.keys()))
 
     actors_service = ActorService()
     actors = actors_service.get_actors()
-    actor_names = { actor['name']: actor['id'] for actor in actors }
+    actor_names = {actor['name']: actor['id'] for actor in actors}
     selected_actors_names = st.multiselect('Atores/Atrizes', list(actor_names.keys()))
     selected_actors_ids = [actor_names[name] for name in selected_actors_names]
 

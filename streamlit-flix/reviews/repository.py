@@ -2,7 +2,7 @@ import requests
 
 import streamlit as st
 
-from login.service import logout
+from auth.services import logout
 
 
 class ReviewRepository:

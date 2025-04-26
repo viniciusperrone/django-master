@@ -1,6 +1,6 @@
 import streamlit as st
 
-from login.page import show_login
+from auth.page import show_login
 from home.page import show_home
 from genres.page import show_genres
 from actors.page import show_actors
