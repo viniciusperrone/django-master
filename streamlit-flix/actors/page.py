@@ -4,7 +4,7 @@ from datetime import datetime as dt
 import streamlit as st
 from st_aggrid import AgGrid
 
-from actors.service import ActorService
+from actors.services import ActorService
 
 
 def show_actors():

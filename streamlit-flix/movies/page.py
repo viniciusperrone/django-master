@@ -6,7 +6,7 @@ from st_aggrid import AgGrid
 
 from movies.services import MovieService
 from genres.services import GenreService
-from actors.service import ActorService
+from actors.services import ActorService
 
 
 def show_movies():
