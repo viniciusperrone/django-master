@@ -8,7 +8,7 @@ from utils.permissions import GlobalDefaultPermission
 
 class ReviewListCreateView(generics.ListCreateAPIView):
     permission_classes = (IsAuthenticated, GlobalDefaultPermission,)
-    queryset = Review
+    queryset = Review.objects.all()
     serializer_class = ReviewSerializer
 
 class ReviewRetrieveUpdateDestroyView(generics.RetrieveUpdateDestroyAPIView):
