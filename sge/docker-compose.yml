@@ -1,7 +1,7 @@
 services:
   sge_web:
     build: .
-    restart: always
+    container_name: sge_web
     ports:
       - 8000:8000
     depends_on:
@@ -9,6 +9,7 @@ services:
 
   sge_db:
     image: postgres:15
+    container_name: sge_db
     ports:
       - 5432:5432
     volumes:
