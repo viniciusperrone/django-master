@@ -17,17 +17,20 @@ def update_product_quantity(sender, instance, created, **kwargs):
 
 @receiver(post_save, sender=Outflow)
 def send_outflow_event(sender, instance, created, **kwargs):
-    if created:
-        notify = Notify()
+    try:
+        if created:
+            notify = Notify()
 
-        data = {
-            'event_type': 'create_outflow',
-            'timestamp': dt.now().strftime('%Y-%m-%d %H:%M:%S'),
-            'product': instance.product.title,
-            'product_cost_price': float(instance.product.cost_price),
-            'product_selling_price': float(instance.product.selling_price),
-            'quantity': instance.quantity,
-            'description': instance.description
-        }
+            data = {
+                'event_type': 'create_outflow',
+                'timestamp': dt.now().strftime('%Y-%m-%d %H:%M:%S'),
+                'product': instance.product.title,
+                'product_cost_price': float(instance.product.cost_price),
+                'product_selling_price': float(instance.product.selling_price),
+                'quantity': instance.quantity,
+                'description': instance.description
+            }
 
-        notify.send_event(data)
+            notify.send_event(data)
+    except:
+        pass
