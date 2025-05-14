@@ -7,6 +7,7 @@ from products.models import Product
 from outflows.models import Outflow
 
 from ai import prompts
+from ai.models import AIResult
 
 
 class SGEAgent:
@@ -45,4 +46,4 @@ class SGEAgent:
 
         result = response.choices[0].message.content
 
-        return result
+        AIResult.objects.create(result=result)
