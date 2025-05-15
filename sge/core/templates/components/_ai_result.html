@@ -1,0 +1,17 @@
+<div class="accordio" id="accordioExample">
+  <div class="accordio-item">
+    <h2 class="accordio-header">
+      <button
+        class="accordio-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo"
+        aria-expanded="false" arial-controls="collapseTwo"
+        >
+        SGE Agent
+      </button>
+    </h2>
+    <div class="accordio-collapse collapse" data-bs-parent="#accordionExample">
+      <div class="accordion-body">
+        {{ ai_result|linebreaks }}
+      </div>
+    </div>
+  </div>
+</div>
