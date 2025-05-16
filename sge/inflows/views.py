@@ -24,6 +24,7 @@ class InflowListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
 
         return queryset
 
+
 class InflowCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Inflow
     template_name = 'inflow_create.html'
@@ -37,9 +38,11 @@ class InflowDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView):
     template_name = 'inflow_detail.html'
     permission_required = 'inflows.view_inflow'
 
+
 class InflowCreateListAPIView(ListCreateAPIView):
     queryset = Inflow.objects.all()
     serializer_class = InflowSerializer
+
 
 class InflowRetrieveAPIView(RetrieveAPIView):
     queryset = Inflow.objects.all()
