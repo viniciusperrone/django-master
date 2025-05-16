@@ -22,12 +22,10 @@ class SGEAgent:
         products = Product.objects.all()
         outflows = Outflow.objects.all()
 
-
         return json.dumps({
             'products': serializers.serialize('json', products),
             'outflows': serializers.serialize('json', outflows),
         })
-
 
     def invoke(self):
         response = self.__client.chat.completions.create(
