@@ -51,6 +51,7 @@ class ProductListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
 
         return context
 
+
 class ProductCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Product
     template_name = 'product_create.html'
@@ -64,6 +65,7 @@ class ProductDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView)
     template_name = 'product_detail.html'
     permission_required = 'products.view_product'
 
+
 class ProductUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView):
     model = Product
     template_name = 'product_update.html'
@@ -71,15 +73,18 @@ class ProductUpdateView(LoginRequiredMixin, PermissionRequiredMixin, UpdateView)
     success_url = reverse_lazy('product_list')
     permission_required = 'products.change_product'
 
+
 class ProductDeleteView(LoginRequiredMixin, PermissionRequiredMixin, DeleteView):
     model = Product
     template_name = 'product_delete.html'
     success_url = reverse_lazy('product_list')
     permission_required = 'products.delete_product'
 
+
 class ProductCreateListAPIView(ListCreateAPIView):
     queryset = Product.objects.all()
     serializer_class = ProductSerializer
+
 
 class ProductRetrieveUpdateDestroyAPIView(RetrieveUpdateDestroyAPIView):
     queryset = Product.objects.all()
