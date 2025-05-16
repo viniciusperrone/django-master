@@ -33,6 +33,7 @@ class OutflowListView(LoginRequiredMixin, PermissionRequiredMixin, ListView):
 
         return context_data
 
+
 class OutflowCreateView(LoginRequiredMixin, PermissionRequiredMixin, CreateView):
     model = Outflow
     template_name = 'outflow_create.html'
@@ -46,9 +47,11 @@ class OutflowDetailView(LoginRequiredMixin, PermissionRequiredMixin, DetailView)
     template_name = 'outflow_detail.html'
     permission_required = 'outflows.view_outflow'
 
+
 class OutflowCreateListAPIView(ListCreateAPIView):
     queryset = Outflow.objects.all()
     serializer_class = OutflowSerializer
+
 
 class OutflowRetrieveAPIView(RetrieveAPIView):
     queryset = Outflow.objects.all()

@@ -15,6 +15,7 @@ def update_product_quantity(sender, instance, created, **kwargs):
             product.quantity -= instance.quantity
             product.save()
 
+
 @receiver(post_save, sender=Outflow)
 def send_outflow_event(sender, instance, created, **kwargs):
     try:
@@ -32,5 +33,5 @@ def send_outflow_event(sender, instance, created, **kwargs):
             }
 
             notify.send_event(data)
-    except:
+    except: # noqa: E722 E261
         pass
